@@ -12,11 +12,11 @@ async function main() {
     try {
         await client.connect(); 
 
-        //await createProfile(client, {
-        //    name: "Professor Pedro Braga",
-        //    university: "Cambridge University",
-        //    discription: "Data analysis for 3-body problem"
-        //})
+        await createProfile(client, {
+           name: "Professor Pedro Braga",
+           university: "Cambridge University",
+           discription: "Data analysis for 3-body problem"
+        })
 
         /*await createMultipleProfiles(client, [
             {
