@@ -12,11 +12,11 @@ async function main() {
     try {
         await client.connect(); 
 
-        await createProfile(client, {
-           name: "Professor Pedro Braga",
-           university: "Cambridge University",
-           discription: "Data analysis for 3-body problem"
-        })
+        // await createProfile(client, {
+        //    name: "Professor Pedro Braga",
+        //    university: "Cambridge University",
+        //    discription: "Data analysis for 3-body problem"
+        // })
 
         /*await createMultipleProfiles(client, [
             {
@@ -43,9 +43,11 @@ async function main() {
 
         ]);*/
 
-        await findOneProfessorByName(client,"Professor Paul Chainieux");
+        //await findOneProfessorByName(client,"Professor Paul Chainieux");
 
         //await updateProfessorByName(client, "Professor Paul Chainieux", { university: "Harvard University" });
+
+        await deleteprofessorByName(client, "Professor Pedro Braga");
 
 
     } catch(e) {
@@ -58,6 +60,14 @@ async function main() {
 }
 
 main().catch(console.error);
+
+
+
+async function deleteprofessorByName(client, nameOfProfessor) {
+    const result = await client.db("professors").collection("profiles").deleteOne({name: nameOfProfessor});
+
+    console.log(`${result.deletedCount} document(s) was/were deleted`);
+}
 
 async function updateProfessorByName(client, nameOfProfessor, updatedProfessor) {
     const result = await client.db("professors").collection("profiles").updateOne({ name: nameOfProfessor }, { $set: updatedProfessor});
