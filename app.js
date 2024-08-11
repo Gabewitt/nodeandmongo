@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require('./mern/node_modules/mongodb/mongodb');
 
 
 async function main() {
@@ -60,6 +60,13 @@ async function main() {
 }
 
 main().catch(console.error);
+
+
+async function deleteProfilesScrapedBeforeDate(client, date) {
+    const result = await client.db("professors").collection("profiles").deleteMany({"last_scrapped": {$lt: date}});
+
+    console.log(`${result.deletedCount} document(s) was/were deleted`);
+}
 
 
 
