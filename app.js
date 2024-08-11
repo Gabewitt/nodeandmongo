@@ -1,4 +1,4 @@
-const { MongoClient } = require('./mern/node_modules/mongodb/mongodb');
+const { MongoClient } = require('mongodb');
 
 
 async function main() {
