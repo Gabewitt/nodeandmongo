@@ -96,6 +96,11 @@ This might prompt an error code in the terminal if you are uploading your branch
 Congrats, you have just updated our github repository. Well almost.
 
 
+**VERY IMPORTANT**
+
+You can see how many changes you have made when you click the repository icon on the left sidebar of vscode. Initially after downloading all the packages, you might have hundreds of changes. You do not want to upload whole packages as everyone already has them installed. So select all the changes by doing cammand+A, then right click and there should be an option to **Add to gitignore**. And be sure to do so. Then you can commit and push that gitignore file afterwards.
+
+
 ## Conforming the changes on the GitHub website
 
 
