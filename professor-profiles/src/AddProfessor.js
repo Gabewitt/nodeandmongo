@@ -17,7 +17,7 @@ function AddProfessor() {
         };
 
         try {
-            const response = await fetch('http://localhost:5004/api/professors', {
+            const response = await fetch('http://localhost:5005/api/professors', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddProfessor from './AddProfessor';
+import ProfessorList from './ProfessorList'; 
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                                 <Link to="/create">
                                     <button>Create New Professor Profile</button>
                                 </Link>
+                                <ProfessorList /> {/* Add the ProfessorList component here */}
                             </div>
                         } 
                     />

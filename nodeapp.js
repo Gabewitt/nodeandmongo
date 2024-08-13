@@ -15,6 +15,7 @@ async function run() {
         const database = client.db('professors');
         const profiles = database.collection('profiles');
 
+        // Route to create a new professor profile
         app.post('/api/professors', async (req, res) => {
             const newProfessor = req.body;
             try {
@@ -26,7 +27,18 @@ async function run() {
             }
         });
 
-        const PORT = process.env.PORT || 5004;
+        // Route to get all professor names
+        app.get('/api/professors', async (req, res) => {
+            try {
+                const professors = await profiles.find({}, { projection: { name: 1 } }).toArray();
+                res.json(professors);
+            } catch (e) {
+                console.error(e);
+                res.status(500).json({ message: 'Error fetching professors' });
+            }
+        });
+
+        const PORT = process.env.PORT || 5005;
         app.listen(PORT, () => {
             console.log(`Server is running on http://localhost:${PORT}`);
         });
