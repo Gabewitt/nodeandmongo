@@ -1,4 +1,4 @@
-db KCL_professors
+use KCL_professors
 
 db.profiles.insertMany([
     {name: "Wayne Dickson", university: "Kings College London", department: "Physics", field: "Nanooptics", interest_areas: ["nanophotonics", "photovoltaics", "quantum dots"], group_head: false},
