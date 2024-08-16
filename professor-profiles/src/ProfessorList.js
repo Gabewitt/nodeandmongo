@@ -8,7 +8,7 @@ function ProfessorList() {
     useEffect(() => {
         if (searchQuery.trim() !== '') { // Only search if there's a query
             setLoading(true);
-            fetch(`http://localhost:5005/api/professors/search?name=${searchQuery}`)
+            fetch(`http://localhost:5007/api/professors/search?name=${searchQuery}`)
                 .then(response => response.json())
                 .then(data => {
                     if (Array.isArray(data)) {

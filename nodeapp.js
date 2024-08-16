@@ -38,7 +38,21 @@ async function run() {
             }
         });
 
-        const PORT = process.env.PORT || 5006;
+        // Route to search for professors by name
+        app.get('/api/professors/search', async (req, res) => {
+            const { name } = req.query;
+
+            try {
+                const query = name ? { name: { $regex: name, $options: 'i' } } : {};
+                const professors = await profiles.find(query, { projection: { name: 1 } }).toArray();
+                res.json(professors);
+            } catch (e) {
+                console.error(e);
+                res.status(500).json({ message: 'Error searching for professors' });
+            }
+        });
+
+        const PORT = process.env.PORT || 5007;
         app.listen(PORT, () => {
             console.log(`Server is running on http://localhost:${PORT}`);
         });
@@ -47,18 +61,6 @@ async function run() {
     }
 }
 
-// Route to search for professors by name
-app.get('/api/professors/search', async (req, res) => {
-    const { name } = req.query;
 
-    try {
-        const query = name ? { name: { $regex: name, $options: 'i' } } : {};
-        const professors = await profiles.find(query, { projection: { name: 1 } }).toArray();
-        res.json(professors);
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: 'Error searching for professors' });
-    }
-});
 
 run().catch(console.error);
